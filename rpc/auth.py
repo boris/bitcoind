@@ -28,12 +28,10 @@ class BitcoinRPC():
 
     def getblockcount(self):
         response = self._call_rpc("getblockcount")
-        msg = f"Current block count: {response['result']}"
-        return msg
+        return f"Current block count: {response['result']}"
 
     def getchaintips(self):
         response = self._call_rpc("getchaintips")
-        msg = f"Chain tips: {response['result']}"
-        return msg
-
+        result = json.dumps(response['result'], indent=4)
+        return f"Chain tips: {result}"
 
