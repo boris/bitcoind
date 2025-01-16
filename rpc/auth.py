@@ -35,3 +35,11 @@ class BitcoinRPC():
         result = json.dumps(response['result'], indent=4)
         return f"Chain tips: {result}"
 
+    def getpeerinfo(self):
+        response = self._call_rpc("getpeerinfo")
+        print("Connected peers:")
+        print("ID\tAddress")
+        for peer in response['result']:
+            print(f"{peer['id']}\t{peer['addr']}")
+        return f"Total peers: {len(response['result'])}"
+
